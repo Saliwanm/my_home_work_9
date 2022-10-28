@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    web:
+        build:
+          dockerfile: ./docker/python/Dockerfile # ми будемо білдити і для того нам потрібно вказати шлях до нашого Dockerfile
+          context: ./ # ставиться для того, щоб наш докерфайл вважав що він знаходиться у папці flask_intro а не папці: flask_intro/docker/python/
+        container_name: "Flask2-web"
+        ports:
+            - "5000:5000" # відповідно зовнішній порт нашого ПК та внутрішній код який буде всередині контейнера з пайтоном
+        volumes:
+            - .:/code # означає що ми папку docker прокидуємо у папку code в середині контейнера
